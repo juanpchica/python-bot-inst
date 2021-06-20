@@ -41,7 +41,7 @@ valoresFinales = [countEnseguida,countJulio,countSeptiembre,countDiciembre]
 max_value = max(valoresFinales)
 max_index = valoresFinales.index(max_value)
 
-if max_index == 0: print("El paciente puede vacunarse Enseguida")
+if max_index == 0: print("El paciente puede vacunarse Enseguida..")
 elif max_index == 1: print("Se agendara para Julio")
 elif max_index == 2: print("Se agendara para septiembre")
 elif max_index == 3: print("Se agendara para diciembre")
