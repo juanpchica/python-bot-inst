@@ -1,0 +1,5 @@
+cc = input(':')
+edad = input(':')
+ocupacion = input(':')
+zona = input(':')
+cantPersonas = input(':')
