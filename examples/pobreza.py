@@ -13,8 +13,8 @@ contMuyRico = 0
 while opcion.lower() == 'si' and cont <=5:
     print(f'Por favor ingrese la información para el mes #{cont}')
     mes = input('Nombre mes:')
-    ingreso = input('Ingreso del mes:')
-    personas = input('Cantidad de personas que dependen del ingreso:')
+    ingreso = int(input('Ingreso del mes:'))
+    personas = int(input('Cantidad de personas que dependen del ingreso:'))
 
     # Valido margen de pobreza
     if ingreso <= 800000:
@@ -38,16 +38,14 @@ while opcion.lower() == 'si' and cont <=5:
         elif personas >= 8 : margenPobreza = listaMargenPobreza[2]
 
     # Calculo el margen de pobreza mas frecuente
-    if margenPobreza == 'Muy pobre' : contMuyPobre += contMuyPobre
-    elif margenPobreza == 'Pobre' : contPobre += contPobre
-    elif margenPobreza == 'Clase Media': contClaseMedia += contClaseMedia
-    elif margenPobreza == 'Rico': contRico += contRico
-    elif margenPobreza == 'Muy Rico': contMuyRico += contMuyRico
+    if margenPobreza == 'Muy pobre' : contMuyPobre += 1
+    elif margenPobreza == 'Pobre' : contPobre += 1
+    elif margenPobreza == 'Clase Media': contClaseMedia += 1
+    elif margenPobreza == 'Rico': contRico += 1
+    elif margenPobreza == 'Muy Rico': contMuyRico += 1
 
     #guardo datos en una lista
-    encuestado.append((mes,int(ingreso),int(personas),margenPobreza))
-
-    cont +=1
+    encuestado.append((mes,ingreso,personas,margenPobreza))
 
     #Despues de ingresar los datos del ultimo mes, hago calculos
     if cont == 5:
@@ -71,15 +69,18 @@ while opcion.lower() == 'si' and cont <=5:
                 maxIngreso = mes[1]
 
             #Calculo mes con minimo ingreso
-            if contMes == 0: minIngreso = mes[1]
-            if mes[1] < minIngreso:
-                posMinIngreso = contMes
+            if contMes == 0:
                 minIngreso = mes[1]
+                posMinIngreso = 0
+            else:
+                if mes[1] < minIngreso:
+                    posMinIngreso = contMes
+                    minIngreso = mes[1]
 
             contMes += 1
 
         #Realizo promedio de ingresos
-        promedio = totalIngreso / len(encuestados)
+        promedio = totalIngreso / len(encuestado)
 
         #Muestro resultados finales para este encuestado
         print(f'Para promedio de sus ingresos es de {promedio}')
@@ -93,10 +94,17 @@ while opcion.lower() == 'si' and cont <=5:
         max_index = listaMargenPobrezaComun.index(max_value)
 
         #Agrego encuestado a lista con todos los valores calculados
-        encuestados.append((encuestado,promedio,encuestado[posMaxIngreso][0],encuestado[posMinIngreso][0]),listaMargenPobreza[max_index])
+        encuestados.append((encuestado,promedio,encuestado[posMaxIngreso][0],encuestado[posMinIngreso][0],listaMargenPobreza[max_index]))
         opcion = input('Desea continuar procesando información? Escriba Si/No: ')
-        if opcion.lower() == 'si' : cont = 1
+        if opcion.lower() == 'si':
+            cont = 1
+            encuestado = []
+            contMuyPobre = 0
+            contPobre = 0
+            contClaseMedia = 0
+            contRico = 0
+            contMuyRico = 0
 
+    cont += 1
 
 #Calculo datos finales de todos los encuestados
-
