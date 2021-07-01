@@ -48,9 +48,17 @@ while True:
     estudiantes.append(estudiante)
 
 
-    finalizar = print(f'Si desea continuar presione enter, si no escriba la palabra NO ')
+    finalizar = print('Si desea continuar presione enter, si no escriba la palabra NO ')
     if finalizar.upper() == "NO":
         break
 
 
 
+#Recorro todos lo estudiantes agregados
+numero = 1
+for estu in estudiantes:
+    print(f'Estudiante #{numero} ')
+    print(f'Nombre: #{estu[1]}')
+    print(f'Promedio: #{estu[4]}')
+    print(f'Logro: #{estu[5]}')
+    print(f'Comentario: #{estu[6]}')
