@@ -2,9 +2,10 @@
 def calculoNotas(notas):
     valorFinal = 0
     notasPorcentaje = [15, 15, 20, 25, 25]
+    val = 0
     for n in notas:
-        valorFinal += (notas[n] * notasPorcentaje[n]) / 100
-
+        valorFinal += (n * notasPorcentaje[val]) / 100
+        val += 1
     return valorFinal
 
 #Calculo el logro por nota
@@ -18,18 +19,19 @@ def Obtenerlogro(nota):
     else: valorLogro = ""
     return valorLogro
 
-notas = []
+
 estudiantes = []
 while True:
+    notas = []
     print(f'Por favor ingrese la información para el estudiante...')
     identidad = input('Documento Identidad: ')
     nombre = input('Nombre: ')
     grado = int(input('Grado que Cursa: '))
-    notas.append(int(input('Primer Nota: ')))
-    notas.append(int(input('Segunda Nota: ')))
-    notas.append(int(input('Tercer Nota: ')))
-    notas.append(int(input('Cuarta Nota: ')))
-    notas.append(int(input('Quinta Nota: ')))
+    notas.append(float(input('Primer Nota: ')))
+    notas.append(float(input('Segunda Nota: ')))
+    notas.append(float(input('Tercer Nota: ')))
+    notas.append(float(input('Cuarta Nota: ')))
+    notas.append(float(input('Quinta Nota: ')))
 
     #Calculo el valor de las notas
     valorNota = calculoNotas(notas)
@@ -48,8 +50,8 @@ while True:
     estudiantes.append(estudiante)
 
 
-    finalizar = print('Si desea continuar presione enter, si no escriba la palabra NO ')
-    if finalizar.upper() == "NO":
+    finalizar = input('Si desea continuar presione enter, si no escriba la palabra NO ')
+    if finalizar.lower() == "no":
         break
 
 
@@ -58,7 +60,8 @@ while True:
 numero = 1
 for estu in estudiantes:
     print(f'Estudiante #{numero} ')
-    print(f'Nombre: #{estu[1]}')
-    print(f'Promedio: #{estu[4]}')
-    print(f'Logro: #{estu[5]}')
-    print(f'Comentario: #{estu[6]}')
+    print(f'Nombre: {estu[1]}')
+    print(f'Promedio: {estu[4]}')
+    print(f'Logro: {estu[5]}')
+    print(f'Comentario: {estu[6]}')
+    numero += 1
