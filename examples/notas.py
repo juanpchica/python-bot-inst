@@ -1,3 +1,4 @@
+#Calculo nota segun porcentajes dados
 def calculoNotas(notas):
     valorFinal = 0
     notasPorcentaje = [15, 15, 20, 25, 25]
@@ -6,9 +7,16 @@ def calculoNotas(notas):
 
     return valorFinal
 
+#Calculo el logro por nota
 def logro(nota):
-    
-
+    valorLogro = ""
+    if nota >= 0 and nota < 4: valorLogro = "Malo"
+    elif nota >= 4 and nota < 6: valorLogro = "Regular"
+    elif nota >= 6 and nota < 8: valorLogro = "Bueno"
+    elif nota >= 8 and nota < 9: valorLogro = "Sobresaliente"
+    elif nota >= 9 and nota <= 10: valorLogro = "Excelente"
+    else: valorLogro = ""
+    return valorLogro
 
 notas = []
 estudiantes = []
