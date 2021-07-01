@@ -8,7 +8,7 @@ def calculoNotas(notas):
     return valorFinal
 
 #Calculo el logro por nota
-def logro(nota):
+def Obtenerlogro(nota):
     valorLogro = ""
     if nota >= 0 and nota < 4: valorLogro = "Malo"
     elif nota >= 4 and nota < 6: valorLogro = "Regular"
@@ -34,7 +34,17 @@ while True:
     #Calculo el valor de las notas
     valorNota = calculoNotas(notas)
 
-    estudiante = (identidad,nombre,grado,notas,valorNota)
+    #Calculo logro
+    logro  = Obtenerlogro(valorNota)
+
+    comentario = "Vamos por Buen Camino"
+
+    #Valido si es necesario o no agregar un comentario
+    if logro == 'Malo' or logro == 'Regular':
+        comentario = input('Agregar un comentario de refuerzo para este estudiante: ')
+
+
+    estudiante = (identidad,nombre,grado,notas,valorNota,logro,comentario)
     estudiantes.append(estudiante)
 
 
