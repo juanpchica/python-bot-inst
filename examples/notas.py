@@ -1,3 +1,15 @@
+def calculoNotas(notas):
+    valorFinal = 0
+    notasPorcentaje = [15, 15, 20, 25, 25]
+    for n in notas:
+        valorFinal += (notas[n] * notasPorcentaje[n]) / 100
+
+    return valorFinal
+
+def logro(nota):
+    
+
+
 notas = []
 estudiantes = []
 while True:
@@ -11,10 +23,16 @@ while True:
     notas.append(int(input('Cuarta Nota: ')))
     notas.append(int(input('Quinta Nota: ')))
 
-    estudiante = (identidad,nombre,grado,notas)
+    #Calculo el valor de las notas
+    valorNota = calculoNotas(notas)
+
+    estudiante = (identidad,nombre,grado,notas,valorNota)
     estudiantes.append(estudiante)
 
 
     finalizar = print(f'Si desea continuar presione enter, si no escriba la palabra NO ')
     if finalizar.upper() == "NO":
         break
+
+
+
