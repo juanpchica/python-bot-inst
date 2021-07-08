@@ -120,24 +120,48 @@ grados = list(grados)
 
 #Recorro todos lo estudiantes agregados
 numero = 1
-dict_grado_prom = {};
+dict_grado_prom = {}
+resultados = {"estudiantes":[],"grados":[]}
 
 for estu in estudiantes:
 
+    promedioEstudiante =  round(estu[4],2)
+
     #Agrego datos en dictionary de grados, para calculo de promedio por grado
     if estu[2] in dict_grado_prom:
-        dict_grado_prom[estu[2]].append(estu[4])
+        dict_grado_prom[estu[2]].append(promedioEstudiante)
     else:
-        dict_grado_prom[estu[2]] = [estu[4]]
+        dict_grado_prom[estu[2]] = [promedioEstudiante]
 
     print(f'Estudiante #{numero} ')
     print(f'Nombre: {estu[1]}')
-    print(f'Promedio: {estu[4]}')
+    print(f'Promedio: {promedioEstudiante}')
     print(f'Logro: {estu[5]}')
     print(f'Comentario: {estu[6]}')
+
+    #Agrego info de estudiante a diccionario de resultados
+    resultados["estudiantes"].append({
+        "Nombre":estu[1],
+        "Promedio":promedioEstudiante,
+        "Logro":estu[5],
+        "Comentario":estu[6]
+    })
+
     numero += 1
 
 #Muestro promedio por grados
 for key in dict_grado_prom:
     promedioGrado = promedio(dict_grado_prom[key])
-    print(f'El promedio del grado {key} es {round(promedioGrado,2)} y el logro es: {Obtenerlogro(promedioGrado)}')
+    logroGrado = Obtenerlogro(promedioGrado)
+    print(f'El promedio del grado {key} es {promedioGrado} y el logro es: {logroGrado}')
+
+    #Agrego grado y logros a diccionario resultados
+    resultados["grados"].append({
+        "Grado":key,
+        "Promedio":promedioGrado,
+        "Logro":logroGrado
+    })
+
+#Creo el archivo resultados.json y escribo los resultados
+resultadoFile = open('resultados.json','w')
+json.dump(resultados,resultadoFile,indent=4)

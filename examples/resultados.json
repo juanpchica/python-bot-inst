@@ -1,0 +1,23 @@
+{
+    "estudiantes": [
+        {
+            "Nombre": "juan",
+            "Promedio": 7.35,
+            "Logro": "Sobresaliente",
+            "Comentario": "Vamos por Buen Camino"
+        },
+        {
+            "Nombre": "pablo",
+            "Promedio": 7.1,
+            "Logro": "Sobresaliente",
+            "Comentario": "Vamos por Buen Camino"
+        }
+    ],
+    "grados": [
+        {
+            "Grado": 6,
+            "Promedio": 7.225,
+            "Logro": "Sobresaliente"
+        }
+    ]
+}
