@@ -1,3 +1,11 @@
+import json
+
+#Cargo archivo json con escalas
+f = open("escalas.json", "r")
+content = f.read()
+escalasDictionary = json.loads(content)
+f.close()
+
 #Calculo nota segun porcentajes dados
 def calculoNotas(notas):
     valorFinal = 0
@@ -11,12 +19,14 @@ def calculoNotas(notas):
 #Calculo el logro por nota
 def Obtenerlogro(nota):
     valorLogro = ""
-    if nota >= 0 and nota < 4: valorLogro = "Malo"
-    elif nota >= 4 and nota < 6: valorLogro = "Regular"
-    elif nota >= 6 and nota < 8: valorLogro = "Bueno"
-    elif nota >= 8 and nota < 9: valorLogro = "Sobresaliente"
-    elif nota >= 9 and nota <= 10: valorLogro = "Excelente"
-    else: valorLogro = ""
+
+    #Recorro escalas y doy logro de acuerdo a nota
+    for escala in escalasDictionary:
+        if nota >= escalasDictionary[escala]["inferior"] and nota < escalasDictionary[escala]["superior"]:
+            valorLogro = escalasDictionary[escala]["escala"]
+            break
+        elif nota == 10: valorLogro = escalasDictionary["3"]["escala"]
+
     return valorLogro
 
 #Detecto si string tiene numeros
