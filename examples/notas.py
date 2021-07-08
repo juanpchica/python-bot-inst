@@ -57,12 +57,22 @@ while True:
             continue
         if type(grado) == int:
             break
-    
-    notas.append(float(input('Primer Nota: ')))
-    notas.append(float(input('Segunda Nota: ')))
-    notas.append(float(input('Tercer Nota: ')))
-    notas.append(float(input('Cuarta Nota: ')))
-    notas.append(float(input('Quinta Nota: ')))
+
+    #Valido tipo de notas que sean decimal o numero entero
+    contNota = 0
+    while contNota < 5:
+        try:
+            nota = float(input(f'Ingrese Nota #{contNota}: '))
+            notas.append(nota)
+            contNota += 1
+        except ValueError:
+            print("La nota ingresada no tiene un valor valido, intenta nuevamente...")
+            continue
+        if nota > 10 or nota < 0:
+            print("Valor no valido,digite una nota entre cero y diez...")
+            continue
+        if contNota == 4:
+            break
 
     #Calculo el valor de las notas
     valorNota = calculoNotas(notas)
