@@ -73,6 +73,8 @@ while True:
             continue
         if type(grado) == int:
             break
+
+
     nota1 = float(input('Primer Nota: '))
     while nota1 > 10 or nota1 < 0:
         print("Valor no valido,digite un valor entre cero y diez")

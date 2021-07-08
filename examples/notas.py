@@ -45,7 +45,19 @@ while True:
         nombre = str(input('Nombre: '))
         hasNumber = hasNumbers(nombre)
 
-    grado = int(input('Grado que Cursa: '))
+    #Valido grado ingresado para estudiante
+    while True:
+        try:
+            grado = int(input('Grado que cursa: '))
+        except ValueError:
+            print("El valor digitado no es un numero, escriba un numero")
+            continue
+        if grado > 11 or grado < 0:
+            print("El grado ingresado no es valido, ingrese un grado valido: ")
+            continue
+        if type(grado) == int:
+            break
+    
     notas.append(float(input('Primer Nota: ')))
     notas.append(float(input('Segunda Nota: ')))
     notas.append(float(input('Tercer Nota: ')))
