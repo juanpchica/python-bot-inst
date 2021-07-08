@@ -1,0 +1,22 @@
+{
+  "0": {
+    "inferior": 0,
+    "superior": 4,
+    "escala": "Regular"
+  },
+  "1": {
+    "inferior": 4,
+    "superior": 6,
+    "escala": "Bueno"
+  },
+  "2": {
+    "inferior": 6,
+    "superior": 8,
+    "escala": "Sobresaliente"
+  },
+  "3": {
+    "inferior": 8,
+    "superior": 10,
+    "escala": "Excelente"
+  }
+}
