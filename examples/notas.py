@@ -19,13 +19,32 @@ def Obtenerlogro(nota):
     else: valorLogro = ""
     return valorLogro
 
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
 
 estudiantes = []
 while True:
     notas = []
     print(f'Por favor ingrese la información para el estudiante...')
-    identidad = input('Documento Identidad: ')
-    nombre = input('Nombre: ')
+
+    #Valido que numero de identidad sea numerico
+    while True:
+        try:
+            identidad = int(input('Documento Identidad: '))
+        except ValueError:
+            print("El valor digitado no es un numero, escriba un numero")
+            continue
+        if type(identidad) == int:
+            break
+
+    #Valido que nombre no contenga numeros
+    nombre = str(input('Nombre: '))
+    hasNumber = hasNumbers(nombre)
+    while hasNumber:
+        print("Datos ingresados no validos, escriba su nombre: ")
+        nombre = str(input('Nombre: '))
+        hasNumber = hasNumbers(nombre)
+
     grado = int(input('Grado que Cursa: '))
     notas.append(float(input('Primer Nota: ')))
     notas.append(float(input('Segunda Nota: ')))
