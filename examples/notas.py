@@ -130,4 +130,4 @@ for estu in estudiantes:
 #Muestro promedio por grados
 for key in dict_grado_prom:
     promedioGrado = promedio(dict_grado_prom[key])
-    print(f'El promedio del grado {key} es {round(promedioGrado,2)}')
+    print(f'El promedio del grado {key} es {round(promedioGrado,2)} y el logro es: {Obtenerlogro(promedioGrado)}')
