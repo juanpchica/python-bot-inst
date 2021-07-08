@@ -19,10 +19,19 @@ def Obtenerlogro(nota):
     else: valorLogro = ""
     return valorLogro
 
+#Detecto si string tiene numeros
 def hasNumbers(inputString):
     return any(char.isdigit() for char in inputString)
 
+#Calculo promedio segun lista
+def promedio(lista):
+    prom = sum(lista) / len(lista)
+    return prom
+
+
 estudiantes = []
+gradosIngresados = []
+
 while True:
     notas = []
     print(f'Por favor ingrese la información para el estudiante...')
@@ -85,7 +94,7 @@ while True:
     if logro == 'Malo' or logro == 'Regular':
         comentario = input('Agregar un comentario de refuerzo para este estudiante: ')
 
-
+    gradosIngresados.append(grado)
     estudiante = (identidad,nombre,grado,notas,valorNota,logro,comentario)
     estudiantes.append(estudiante)
 
@@ -95,13 +104,30 @@ while True:
         break
 
 
+#Detecto grados ingresados sin repetir
+grados = set(gradosIngresados)
+grados = list(grados)
 
 #Recorro todos lo estudiantes agregados
 numero = 1
+dict_grado_prom = {};
+
 for estu in estudiantes:
+
+    #Agrego datos en dictionary de grados, para calculo de promedio por grado
+    if estu[2] in dict_grado_prom:
+        dict_grado_prom[estu[2]].append(estu[4])
+    else:
+        dict_grado_prom[estu[2]] = [estu[4]]
+
     print(f'Estudiante #{numero} ')
     print(f'Nombre: {estu[1]}')
     print(f'Promedio: {estu[4]}')
     print(f'Logro: {estu[5]}')
     print(f'Comentario: {estu[6]}')
     numero += 1
+
+#Muestro promedio por grados
+for key in dict_grado_prom:
+    promedioGrado = promedio(dict_grado_prom[key])
+    print(f'El promedio del grado {key} es {round(promedioGrado,2)}')
