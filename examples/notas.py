@@ -1,10 +1,10 @@
 #Calculo nota segun porcentajes dados
 def calculoNotas(notas):
     valorFinal = 0
-    notasPorcentaje = [15, 15, 20, 25, 25]
+    notasPorcentaje = [0.1, 0.1, 0.2, 0.25, 0.25]
     val = 0
     for n in notas:
-        valorFinal += (n * notasPorcentaje[val]) / 100
+        valorFinal += n * notasPorcentaje[val]
         val += 1
     return valorFinal
 
